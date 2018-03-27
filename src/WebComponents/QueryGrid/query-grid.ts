@@ -984,7 +984,7 @@ namespace Vidyano.WebComponents {
         },
         observers: [
             "_updateTables(_items, _columns, canReorder)",
-            "_updateVerticalSpacer(query.totalItems, rowHeight)",
+            "_updateVerticalSpacer(query.totalItems, rowHeight, viewportSize)",
             "_updateOutOfViewColumns(_columns, viewportSize, _horizontalScrollOffset, columnWidthsCalculated)"
         ],
         forwardObservers: [
@@ -1387,7 +1387,7 @@ namespace Vidyano.WebComponents {
             }));
         }
 
-        private _updateVerticalSpacer(totalItems: number, rowHeight: number) {
+        private _updateVerticalSpacer(totalItems: number, rowHeight: number, viewportSize: ISize) {
             this._requestAnimationFrame(() => {
                 const newHeight = totalItems * rowHeight;
                 this.$.verticalSpacer.style.height = `${newHeight}px`;
